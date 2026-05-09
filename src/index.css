@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #f9f9fb;
+  --color-primary: #0058bc;
+  --color-primary-container: #0070eb;
+  --color-secondary: #4648d4;
+  --color-secondary-container: #6063ee;
+  --color-tertiary: #b10e6b;
+  --color-tertiary-container: #d23284;
+  
+  --color-surface: #f9f9fb;
+  --color-surface-dim: #d9dadc;
+  --color-surface-bright: #f9f9fb;
+  --color-surface-container-low: #f3f3f5;
+  --color-surface-container: #eeeef0;
+  --color-surface-container-high: #e8e8ea;
+  --color-surface-container-highest: #e2e2e4;
+  
+  --color-on-surface: #1a1c1d;
+  --color-on-surface-variant: #414755;
+  --color-outline: #717786;
+  --color-outline-variant: #c1c6d7;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  --animate-spectral-flow: spectral-flow 10s ease infinite;
+
+  @keyframes spectral-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+@layer components {
+  .prism-gradient {
+    background: linear-gradient(135deg, #0058bc 0%, #4648d4 50%, #b10e6b 100%);
+    background-size: 200% 200%;
+  }
+
+  .prism-border {
+    position: relative;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+
+  .prism-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(0, 88, 188, 0.4), rgba(70, 72, 212, 0.4), rgba(177, 14, 107, 0.2));
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .spectral-blur {
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: -1;
+  }
+}
+
+body {
+  @apply bg-background text-on-surface font-sans antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight font-bold;
+}
+
+.font-display-xl {
+  @apply text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-[-0.03em];
+}
+
+.section-gap {
+  @apply py-20 md:py-32;
+}
